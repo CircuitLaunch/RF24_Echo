@@ -18,8 +18,6 @@ class RadioStream : public Stream
             byte pipeNo;
             if(radio.available(&pipeNo)) {
                 radio.read(&buf, 1);
-                // Serial.println("Read byte");
-                //radio.writeAckPayload(pipeNo, &buf, 1);
                 return buf;
             }
             return -1;
@@ -38,8 +36,6 @@ class RadioStream : public Stream
             radio.stopListening();
             if(!radio.write(&iBuf, 1)) {
                 result = -1;
-            //} else {
-            //    Serial.println("Wrote byte");
             }
             radio.startListening();
             return result;
@@ -50,4 +46,3 @@ class RadioStream : public Stream
 };
 
 #endif
-
